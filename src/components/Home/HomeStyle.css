@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Roboto&display=swap");
+.HomeContainer {
+  font-family: "Handlee", cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7rem;
+  flex-direction: column;
+}
+.HeaderText {
+  width: 642px;
+  height: 109px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 82px;
+  line-height: 109px;
+  color: #ff0000;
+}
+.Results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 700px;
+  height: 85px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 85px;
+  color: #ffffff;
+  margin-top: 12rem;
+}
+.TotalQuestionsText {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.StartButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 13rem;
+}
+.StartButtonText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 82px;
+  line-height: 109px;
+  color: #ffffff;
+}

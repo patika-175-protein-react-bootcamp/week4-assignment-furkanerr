@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Roboto&display=swap");
+.Left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20rem;
+
+}
+.FinalHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ResultPageContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 6rem;
+}
+.FinalHeaderText {
+  width: 184px;
+  height: 109px;
+
+  font-family: "Handlee";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 82px;
+  line-height: 109px;
+
+  color: #ff0000;
+}
+.AllQuestionsHeaderText {
+  width: 400px;
+  height: 85px;
+
+  font-family: "Handlee";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 85px;
+
+  color: #ff0000;
+}
+.QuestionResult {
+  font-family: "Handlee";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 69px;
+  margin-right: 3rem;
+ 
+  color: #ffffff;
+}
+.GameResult{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Handlee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 85px;
+    color: #FFFFFF;
+}
+
+.RestartButtonText{
+    position: relative;
+  
+    font-family: 'Handlee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    top: 7rem;
+    
+    color: #FFFFFF;
+}
+.QuestionsText{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.PointText{
+    margin-top: 3rem;
+   
+}
+.QuestionsResults{
+   
+  margin-left: -3rem;
+    display: flex;
+    align-items: center;
+}
+.QuestionsResultsContainer{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}

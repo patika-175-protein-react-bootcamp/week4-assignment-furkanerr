@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Roboto&display=swap");
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+}
+.containerGreen {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #00BF63;
+}
+.containerRed{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #FA0000;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.right {
+  flex-direction: column;
+
+  font-family: "Handlee", cursive;
+}
+.answers {
+  /* width: 37rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  position: relative; */
+  width: 37rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  position: relative;
+}
+
+.question {
+  color: white;
+  position: relative;
+  top: -38rem;
+  left: -12rem;
+  width: 12.5rem;
+  height: 6.25rem;
+  font-family: "Handlee", cursive;
+  font-size: 6rem;
+}
+.ScoreBoard {
+  font-size: 48px;
+  font-weight: 400;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  position: relative;
+   top: 3rem;
+}
+.Tour {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+.answerSayi1 {
+   font-weight: 400;
+  font-size: 90px;
+  width: 134px;
+  height: 112px;
+  color: #ffffff;
+  position: relative;
+  top: 9rem;
+  left: 3.5rem; 
+}
+.answerSayi2 {
+  font-weight: 400;
+  font-size: 90px;
+  width: 134px;
+  height: 112px;
+  color: #ffffff;
+  position: relative;
+  top: 9rem;
+  left: 3.5rem;
+}
+.answerSayi3 {
+  font-weight: 400;
+  font-size: 90px;
+  width: 134px;
+  height: 112px;
+  color: #ffffff;
+  position: relative;
+  top: 9rem;
+  left: 3.5rem;
+}
+.answer1 {
+   position: relative;
+  right: 14rem;
+  top: 1rem; 
+}
+.answer2{
+ position: relative;
+  right: -12rem;
+  top: -9rem;
+}
+.answer3{
+  position: relative;
+  right: 9rem;
+  top: -18rem; 
+  
+}
