@@ -1,5 +1,5 @@
-#LİNK
-# https://matodevi-furkaner.netlify.app/
+# LİNK
+#  https://math-game-furkaner.netlify.app/
 # week4-assignment
 
 ### Figma Linki: https://www.figma.com/file/KBUZCtv1lw507YqSABRXwV/Matematik-%C3%96devi?node-id=0%3A1
