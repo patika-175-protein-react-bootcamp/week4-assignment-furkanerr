@@ -1,101 +1,52 @@
-import React, { useState, useEffect } from "react";
-import "./QuestionsStyle.css";
-import { SoruEkraniIcon, AnswerCircleIcon } from "../../constants/icons";
+/* Dependencies */
+import React, { useState, useEffect,useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import {useScore} from '../../contexts/scoreContext';
+// import the useWindowSize
+import  useWindowSize  from "../../hooks/useWindowSize";
+
+/*style*/
+import "./QuestionsStyle.css";
+/*Icons*/
+import { SoruEkraniIcon,AnswerCircleIcon} from "../../constants/icons";
+
+/**Context */
+import { useScore } from "../../contexts/scoreContext";
+
 function Questions() {
-  const {score,setScore,tour,questionList,setQuestionList,soruSayisi, setSoruSayisi} = useScore();
+  const {
+    checkAnswer,
+        answers,
+        question,
+        correctAnswer,
+        incorrectAnswer,
+        score,
+        tour,
+        setTour,
+        allQuestions,
+        correctAnswersNumber,
+        createQuestion,
+        isCorrect,
+        
+  } = useScore();
+  const [selectedOption, setSelectedOption] = useState();
+  const [screenWidth,screenHeight] =useWindowSize();
 
-  let navigate = useNavigate();
-
-  const [firstNumber, setFirstNumber] = useState(0);
-  const [secondNumber, setSecondNumber] = useState(0);
- const [containerStyle, setContainerStyle] = useState("container");
-  const [correct, setCorrect] = useState(0);
- // const [score, setScore] = useState(0);
-  const [dogruSoru, setDogruSoru] = useState(0);
- // const [soruSayisi, setSoruSayisi] = useState(1);
-  const [disable, setDisable] = useState(false);
-  //push correct answer, firstWrong answer, secondWrong answer to array
-  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
-    //set first with random number between 1 and 9
-    setFirstNumber(Math.floor(Math.random() * 9) + 1);
-    //set second with random number between 1 and 9
-    setSecondNumber(Math.floor(Math.random() * 9) + 1);
-  }, [soruSayisi]);
-  
+    createQuestion();
+  }, []);
 
+  const backgrooundStyle = isCorrect === true ? 'containerGreen' : isCorrect===false ? 'containerRed' : 'container';
 
-    //set Wrong with( (fist-1)*second )
-    useEffect(() => {
-     
-       setCorrect(firstNumber * secondNumber);
-       //sorunun ilk yanlış, ikinci yanlış,doğru  cevabını set ediyoruz.
-       setAnswers([(firstNumber - 1) * secondNumber, (secondNumber + 1) * firstNumber, firstNumber * secondNumber]);
-       
-     }, [firstNumber, secondNumber]);
-
-    let shuffledAnswers= answers.sort(() => Math.random() - 0.5); // şıklar hep aynı yere denk gelmesin diye answer arrayını random olarak sıralıyoruz.
-    
-
-
-  const handleAnswer = (e) => {
- 
- 
-    //tıklandıktan butonlar sonra disable olacak
-    setDisable(true);
-    if (soruSayisi <= 10) {
-      //soru sayısı 10 dan küçük olduğu sürece olack olan işlemler
-      setTimeout(() => {
-        //srou sayısını 1 arttırır 3 sn sonra
-        setSoruSayisi(soruSayisi + 1);
-      }, 3000);
-     
-    }
-    if (parseInt(e.target.innerText) === correct) {
-      //eğer cevap doğru ise bilbileri state atar
-      setQuestionList([...questionList,{
-        soru: firstNumber + " x " + secondNumber,
-        cevap: correct,
-        isCorrect: true
-        }]);
-      //arka planı yeşil yapar
-      setContainerStyle("containerGreen");
-      setTimeout(() => {
-        setDisable(false); // butonları tekrardan aktif hale getirir
-      setDogruSoru(dogruSoru + 1);
-      setScore(Math.floor(Math.sqrt(correct)) + score);
-      setContainerStyle("container");
-      //3 saniye sonra arka planı siyah yapar, scoru girer, doğru soru sayısını 1 arttırır
-      }, 3000);
-    }
-    else {
-      setQuestionList([...questionList,{
-        soru: firstNumber + " x " + secondNumber,
-        cevap: correct,
-        isCorrect: false
-        }]);
-      setContainerStyle("containerRed");
-      setTimeout(() => {
-        setDisable(false);
-        setContainerStyle("container");
-      }, 3000);
-    }
-  };
-  if(soruSayisi===11){
-    navigate("/results"); //soru sayısı 11 olunca oyun bitmiş demektir ve sonuç sayfasına yönlendirir
-  }
   return (
     <>
-      <div className={containerStyle}>
+      <div className={backgrooundStyle}>
         <div className="left">
           <div className="QuestionTableAndMan">
-            <SoruEkraniIcon />
+            <SoruEkraniIcon width={screenWidth} height={screenHeight} />
           </div>
           <div className="question">
-            {firstNumber} x {secondNumber}
+            {question}
           </div>
         </div>
         <div className="right">
@@ -103,32 +54,49 @@ function Questions() {
             <div className="Score">Score: {score}</div>
             <div className="Tour">Tour: {tour}</div>
             <div className="Questions">
-              Questions:{dogruSoru}/{soruSayisi}
+              Questions:{correctAnswersNumber}/{allQuestions.length}
             </div>
           </div>
           <div className="answers">
-           <div className="answer1 answer">
-              <div className="answerSayi1 ans" style={{ pointerEvents: disable ? 'none' : 'auto' }} onClick={(e) => handleAnswer(e)}>
-                {shuffledAnswers[0]} {/* birinci şık */}
-               
-              </div>
-              <div id={shuffledAnswers[0]}>    <AnswerCircleIcon  /></div>
-              
-            </div>
-            <div className="answer2 answer">
-              <div className="answerSayi2 ans" style={{ pointerEvents: disable ? 'none' : 'auto' }} onClick={(e) => handleAnswer(e)}>
-                {shuffledAnswers[1]} {/* ikinci  şık */}
-               
-              </div>
-             <div id={shuffledAnswers[1]}> <AnswerCircleIcon ></AnswerCircleIcon></div>
-            </div>
-            <div className="answer3 answer">
-              <div className="answerSayi3 ans" style={{ pointerEvents: disable ? 'none' : 'auto' }} onClick={(e) => handleAnswer(e)}>
-                {shuffledAnswers[2]} {/* üçüncü  şık */}
+            {answers.map((answer, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`answer${index+1} answer`}
+                  onClick={() =>{ 
+                    setSelectedOption(answer);
+                    checkAnswer(answer)}}
+                >
+                     {
+                    //if isCorrect is null, Icon color is white
+                    isCorrect === null && (  <AnswerCircleIcon color={'white'} width={screenWidth} height={screenHeight} />) 
+
+                  }
+                  {
+                    // if isCorrect is true and selectedOption is equal to correctAnswer, Icon color is #2D2D2D else icon color is white
+                    isCorrect === true &&(
+                    <AnswerCircleIcon   width={screenWidth} height={screenHeight} 
+                    color={answer === correctAnswer ? "#2D2D2D" : "white"}/>
+                    ) 
+                  }
+                  {
+                    // if isCorrect is false and option is equal to selectedOption,  Icon color is #2D2D2D  if option is equal to correctAnswer, Icon color is #00bf63 else icon color is white
+                    isCorrect === false && (
+                    <AnswerCircleIcon width={screenWidth} height={screenHeight} 
+                    color={answer === selectedOption ? "#2D2D2D" :
+                    answer === correctAnswer ? "#00bf63" : "white"}/>
+                    )
+
+                  }
+                  <div className={`answerSayi${index+1}`}>
+                  {answer}
+                  </div>
+                </div>
                 
-              </div>
-              <div id={shuffledAnswers[2]}><AnswerCircleIcon  /></div>
-            </div>
+               
+
+              );
+            })}
           </div>
         </div>
       </div>
