@@ -11,14 +11,19 @@ import { useScore } from "../../contexts/scoreContext";
 import { Link } from "react-router-dom";
 function ResultPage() {
   const {
+  
     score,
     setScore,
-    tour,
     setTour,
-    questionList,
-    setQuestionList,
-    setSoruSayisi,
-    totalResults,
+    allQuestions,
+    correctAnswersNumber,
+    setCorrectAnswer,
+    setCorrectAnswersNumber,
+    setIncorrectAnswer,
+    setQuestion,
+    setIsCorrect,
+    setAllQuestions,
+  
   } = useScore();
 
   
@@ -31,11 +36,15 @@ function ResultPage() {
   };
 
   const handleRestart = () => {
-    // tur sayısını 1 arttırır. scor ve soru sayısını sıfırlar. soruListesini sıfırlar
+   setAllQuestions([]);
+    setCorrectAnswer(0);
+    setIncorrectAnswer(0);
+    setCorrectAnswersNumber(0);
+    setQuestion("");
+    setIsCorrect(null);
     setTour((x) => x + 1);
     setScore(0);
-    setQuestionList([]);
-    setSoruSayisi(1);
+
   };
   return (
     <div className="ResultPageContainer">
@@ -47,14 +56,14 @@ function ResultPage() {
         <div className="GameResult">
           <div className="PointText">Point: {score}</div>
           <div className="QuestionsText">
-            Questions: {questionList.length ? questionList.length : 0}
+            Questions: {allQuestions.length}
           </div>
           <div className="CorrectAnswersText">
             Correct Answers:{" "}
-            {questionList.filter((item) => item.isCorrect === true).length}
+            {correctAnswersNumber}
           </div>
         </div>
-        <Link to={"/questions"} onClick={handleRestart}>
+        <Link to={"/questions"} onClick={handleRestart} style={{textDecoration:'none'}}>
           <div className="RestartButton">
             <div className="RestartButtonText">Restart</div>
 
@@ -69,11 +78,11 @@ function ResultPage() {
           <LineUnderAllQuestion />
         </div>
         <div className="QuestionsResultsContainer">
-          {questionList.map((item, index) => {
+          {allQuestions.map((item, index) => {
             return (
               <div className="QuestionsResults" key={index}>
                 <div className="QuestionResult">
-                  {item.soru}={item.cevap}
+                  {item.question}={item.correct}
                 </div>
                 {item.isCorrect ? (
                   <TrueIcon style={IconStyle} />
