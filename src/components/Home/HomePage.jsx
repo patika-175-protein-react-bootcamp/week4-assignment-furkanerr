@@ -4,13 +4,23 @@ import { LineUnderHeader, StartCircleIcon } from '../../constants/icons';
 import  './HomeStyle.css';
 function HomePage() {
 
-const [result,setResult] = useState([]);
+  const [totalScore, setTotalScore] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
+  const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0);
 
   useEffect(() => {
-    
-   setResult(JSON.parse(localStorage.getItem('total')));
-    
-  }, [])
+    if (localStorage.getItem('totalScore')) {
+      setTotalScore(localStorage.getItem('totalScore'));
+    }
+
+    if (localStorage.getItem('totalQuestions')) {
+      setTotalQuestions(localStorage.getItem('totalQuestions'));
+    }
+
+    if (localStorage.getItem('totalCorrectAnswers')) {
+      setTotalCorrectAnswers(localStorage.getItem('totalCorrectAnswers'));
+    }
+  }, []);
   
  
 
@@ -21,11 +31,11 @@ const [result,setResult] = useState([]);
             <LineUnderHeader/>
           </div>
           <div className='Results'>
-            <div className='TotalPointText'>Total Point: {result[0]?.totalScore}</div>
-            <div className='TotalQuestionsText'>Total Questions: {result[0]?.totalQuestions  }</div>
-            <div className='CorrectAnswersText'>Correct Answers: {result[0]?.correctAnswers  }</div>
+            <div className='TotalPointText'>Total Point: {totalScore}</div>
+            <div className='TotalQuestionsText'>Total Questions: {totalQuestions}</div>
+            <div className='CorrectAnswersText'>Correct Answers: {totalCorrectAnswers}</div>
           </div>
-          <Link to="questions">
+          <Link to="questions" style={{textDecoration:'none'}}>
           <div className='StartButton'>
             <div className='StartButtonText'>Start</div>
             <StartCircleIcon/>
