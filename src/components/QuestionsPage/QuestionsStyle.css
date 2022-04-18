@@ -33,20 +33,13 @@
   font-family: "Handlee", cursive;
 }
 .answers {
-  /* width: 37rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 2rem;
-  margin-left: 5rem;
-  position: relative; */
+
   width: 37rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-left: 5rem;
   position: relative;
 }
@@ -59,16 +52,16 @@
   width: 12.5rem;
   height: 6.25rem;
   font-family: "Handlee", cursive;
-  font-size: 6rem;
+  font-size: 5vw;
 }
 .ScoreBoard {
-  font-size: 48px;
+  font-size: 3vw;
   font-weight: 400;
   color: #ffffff;
   display: flex;
   justify-content: center;
   position: relative;
-   top: 3rem;
+  top: -7rem;
 }
 .Tour {
   margin-left: 5rem;
@@ -76,47 +69,50 @@
 }
 .answerSayi1 {
    font-weight: 400;
-  font-size: 90px;
+  font-size:  4vw;
   width: 134px;
   height: 112px;
   color: #ffffff;
   position: relative;
-  top: 9rem;
+  top: -9rem;
   left: 3.5rem; 
 }
 .answerSayi2 {
   font-weight: 400;
-  font-size: 90px;
+  font-size:  4vw;
   width: 134px;
   height: 112px;
   color: #ffffff;
   position: relative;
-  top: 9rem;
+  top: -9rem;
   left: 3.5rem;
 }
 .answerSayi3 {
   font-weight: 400;
-  font-size: 90px;
+  font-size:  4vw;
   width: 134px;
   height: 112px;
   color: #ffffff;
   position: relative;
-  top: 9rem;
+  top: -9rem;
   left: 3.5rem;
 }
 .answer1 {
-   position: relative;
-  right: 14rem;
-  top: 1rem; 
+  position: relative;
+  right: 15rem;
+  top: 0rem;
+  height: 10rem;
 }
 .answer2{
- position: relative;
+  position: relative;
   right: -12rem;
-  top: -9rem;
+  top: -4rem;
+  height: 10rem;
 }
 .answer3{
   position: relative;
   right: 9rem;
-  top: -18rem; 
+  top: -2rem;
+  height: 10rem;
   
 }
