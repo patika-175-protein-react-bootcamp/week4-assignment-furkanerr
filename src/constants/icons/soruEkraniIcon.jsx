@@ -3,8 +3,8 @@ import React from 'react'
 function SoruEkraniIcon(props) {
   return (
     <svg
-    width={props?.size || 800}
-    height={props?.size || 800}
+    width={props?.width/2.5 || 800}
+    height={800}
     viewBox="0 0 948 948"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
